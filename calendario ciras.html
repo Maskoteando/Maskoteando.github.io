@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria - Agenda tu Cita</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style type="text/css">
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f9ff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2a7a7b;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, button {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #f8b400;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3a8b7a;
+}
+
+.mensaje-exito {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    text-align: center;
+}
+</style>
+    <div class="container">
+        <h1>Veterinaria Maskoteando</h1>
+     <form id="appointmentForm">
+    <label for="nombre">Nombre del dueño:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="mascota">Nombre de la mascota:</label>
+    <input type="text" id="mascota" name="mascota" required>
+
+    <label for="fecha">Fecha de la cita:</label>
+    <input type="date" id="fecha" name="fecha" required>
+
+    <label for="hora">Hora:</label>
+    <input type="time" id="hora" name="hora" required>
+
+    <label for="especie">Especie:</label>
+     <input type="text" id="especie" name="especie" required>
+
+     <label for="motivo">Motivo de la cita:</label>
+     <input type="text" id="motivo" name="motivo" required>
+
+     <label for="tratamiento">Tratamiento:</label>
+     <input type="text" id="tratamiento" name="tratamiento">
+
+    <button type="submit">Agendar Cita</button>
+
+    <br>
+    <button class="volver" type="button" onclick="window.location.href='index1.html';">Regresar</button>
+</form>
+
+            <br>
+           
+        </form>
+
+        <div id="mensajeExito" class="mensaje-exito" style="display: none;">
+            ✅ ¡Tu cita ha sido agendada con éxito!
+        </div>
+    </div>
+
+    <script>
+    const form = document.getElementById('appointmentForm');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const datos = {
+            nombre: document.getElementById('nombre').value,
+            mascota: document.getElementById('mascota').value,
+            fecha: document.getElementById('fecha').value,
+            hora: document.getElementById('hora').value,
+            especie: document.getElementById('especie').value,
+            motivo: document.getElementById('motivo').value,
+            tratamiento: document.getElementById('tratamiento').value
+        };
+
+        // Guardar en localStorage
+        localStorage.setItem("citaRegistrada", JSON.stringify(datos));
+
+        // Crear parámetros para enviar por URL
+        const params = new URLSearchParams(datos);
+
+        // Redirigir a cupon.html con los datos
+        window.location.href = `cupon.html?${params.toString()}`;
+    });
+    </script>
+
+
+<script>
+    function registrarCita() {
+        const datos = {
+            fecha: document.getElementById("fecha").value,
+            nombre: document.getElementById("nombre").value,
+            especie: document.getElementById("especie").value,
+            motivo: document.getElementById("motivo").value,
+            horario: document.getElementById("horario").value,
+            tratamiento: document.getElementById("tratamiento").value
+        };
+
+        // Guardar en localStorage
+        localStorage.setItem("citaRegistrada", JSON.stringify(datos));
+
+        // Redirigir a la página del cupón
+        window.location.href = "historial V.html";
+    }
+</script>
+
+</body>
+</html>
+

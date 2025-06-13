@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial Veterinario</title>
+ 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #3a8b7a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 30px;
+        }
+
+        h2 {
+            color: #3a8b7a;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #c4c8cb;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3a8b7a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f8ff;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .editar {
+            background-color: #3a8b7a;
+        }
+
+        .guardar {
+            background-color: #3a8b7a;
+        }
+
+        .eliminar {
+            background-color: #f8b400;
+        }
+
+        .regresar {
+            background-color: #3a8b7a;
+            margin-bottom: 20px;
+        }
+           /* Estilo básico para el botón */
+        .btn-imprimir {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .btn-imprimir:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Clínica Veterinaria Maskoteando</h1>
+</header>
+
+<main>
+    <button class="btn regresar" onclick="window.location. href='index1.html';">Regresar</button>
+
+    <h2>Historial de Atención</h2>
+    <table id="historial">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre Mascota</th>
+                <th>Especie</th>
+                <th>Motivo Consulta</th>
+                <th>Horario</th>
+                <th>Tratamiento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <!-- Copia y pega esta estructura para más filas -->
+           
+             
+            
+            
+            
+            <!-- Agrega más registros aquí -->
+        </tbody>
+    </table>
+</main>
+
+<script>
+ function eliminarFila(boton) {
+    const fila = boton.closest("tr");
+    const nombreMascota = fila.children[1].textContent;
+    const fecha = fila.children[0].textContent;
+
+    if (confirm("¿Estás seguro de que deseas eliminar esta fila?")) {
+        // Eliminar visualmente la fila
+        fila.remove();
+
+        // Eliminar del localStorage
+        let historial = JSON.parse(localStorage.getItem("historialMedico")) || [];
+
+        // Filtrar todas las citas que no coincidan exactamente con esta
+        historial = historial.filter(cita => !(cita.nombre === nombreMascota && cita.fecha === fecha));
+
+        // Guardar el nuevo historial actualizado
+        localStorage.setItem("historialMedico", JSON.stringify(historial));
+    }
+}
+
+
+    function imprimirFila(boton) {
+        const fila = boton.closest('tr');
+        const contenido = fila.outerHTML;
+
+        const ventana = window.open('', '', 'width=800,height=600');
+        ventana.document.write(`
+            <html>
+            <head>
+                <title>Imprimir Fila</title>
+                <style>
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-family: Arial, sans-serif;
+                    }
+                    th, td {
+                        border: 1px solid #333;
+                        padding: 10px;
+                        text-align: left;
+                    }
+                    th {
+                        background-color: #3a8b7a;
+                        color: white;
+                    }
+                </style>
+            </head>
+            <body>
+                <h2>Historial de Atención - Registro Individual</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Nombre Mascota</th>
+                            <th>Especie</th>
+                            <th>Motivo Consulta</th>
+                            <th>Horario</th>
+                            <th>Tratamiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${contenido.replace(/<td class="acciones">.*<\/td>/, '')}
+                    </tbody>
+                </table>
+                <script>
+                    window.onload = function() {
+                        window.print();
+                        window.onafterprint = function() {
+                            window.close();
+                        };
+                    };
+                <\/script>
+            </body>
+            </html>
+        `);
+        ventana.document.close();
+    }
+
+    function editarFila(boton) {
+        const fila = boton.closest('tr');
+        const celdas = fila.querySelectorAll('td');
+        const esModoEdicion = boton.textContent === 'Guardar';
+
+        if (esModoEdicion) {
+            celdas.forEach((celda, index) => {
+                if (index < 6) {
+                    const input = celda.querySelector('input');
+                    if (input) {
+                        celda.textContent = input.value;
+                    }
+                }
+            });
+            boton.textContent = 'Editar';
+            boton.classList.remove('guardar');
+            boton.classList.add('editar');
+        } else {
+            celdas.forEach((celda, index) => {
+                if (index < 6) {
+                    const texto = celda.textContent;
+                    celda.innerHTML = `<input type="text" value="${texto}" style="width: 100%">`;
+                }
+            });
+            boton.textContent = 'Guardar';
+            boton.classList.remove('editar');
+            boton.classList.add('guardar');
+        }
+    }
+</script>
+
+<script>
+    // Cargar historial desde localStorage al iniciar
+    document.addEventListener("DOMContentLoaded", function () {
+        const historial = JSON.parse(localStorage.getItem("historialMedico")) || [];
+        const tbody = document.querySelector("#historial tbody");
+
+        historial.forEach((cita, index) => {
+            const fila = document.createElement("tr");
+            fila.innerHTML = `
+                <td>${cita.fecha}</td>
+                <td>${cita.nombre}</td>
+                <td>${cita.especie}</td>
+                <td>${cita.motivo}</td>
+                <td>${cita.horario}</td>
+                <td>${cita.tratamiento}</td>
+                <td class="acciones">
+                    <button class="btn editar">Editar</button>
+                    <button class="btn eliminar">Eliminar</button>
+                    <button class="btn-imprimir">Descargar</button>
+                </td>
+            `;
+
+            // Asignar eventos después de crear la fila
+            fila.querySelector(".eliminar").addEventListener("click", function () {
+                if (confirm("¿Estás seguro de que deseas eliminar esta cita?")) {
+                    // Eliminar del DOM
+                    fila.remove();
+
+                    // Eliminar del localStorage
+                    const nuevaLista = historial.filter((item, i) => i !== index);
+                    localStorage.setItem("historialMedico", JSON.stringify(nuevaLista));
+                }
+            });
+
+            fila.querySelector(".editar").addEventListener("click", function () {
+                editarFila(this);
+            });
+
+            fila.querySelector(".btn-imprimir").addEventListener("click", function () {
+                imprimirFila(this);
+            });
+
+            tbody.appendChild(fila);
+        });
+    });
+</script>
+
+
+</body>
+</html>

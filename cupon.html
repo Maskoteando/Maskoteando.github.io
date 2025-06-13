@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recibo de Cita Veterinaria</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 30px;
+    }
+
+    .recibo {
+      background: #fff;
+      border: 1px solid #ccc;
+      max-width: 500px;
+      margin: auto;
+      padding: 20px 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2a7a7b;
+    }
+
+    button {
+      background-color: #f2d64b;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+      padding: 10px;
+      font-size: 15px;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #3a8b7a;
+    }
+
+    .info {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .info p {
+      margin: 10px 0;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .mensaje-exito {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+      text-align: center;
+      display: none;
+    }
+
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+
+      .recibo {
+        box-shadow: none;
+        border: none;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="recibo">
+    <h1>Veterinaria Maskoteando</h1>
+    
+    <div class="info">
+      <p><strong>Nombre del dueño:</strong> <span id="nombre"></span></p>
+      <p><strong>Nombre de la mascota:</strong> <span id="mascota"></span></p>
+      <p><strong>Fecha de la cita:</strong> <span id="fecha"></span></p>
+      <p><strong>Hora:</strong> <span id="hora"></span></p>
+      <p><strong>Especie:</strong> <span id="especie"></span></p>
+      <p><strong>Motivo de la cita:</strong> <span id="motivo"></span></p>
+      <p><strong>Tratamiento:</strong> <span id="tratamiento"></span></p>
+    </div>
+
+    <div class="footer">
+      ¡Gracias por confiar en nosotros!<br>
+      Dirección: Calle Salud Animal #123<br>
+      Tel: 555-123-4567
+    </div>
+
+    <button class="volver" onclick="window.location.href='index1.html';">Regresar</button>
+    <button onclick="guardarEnHistorial()">Guardar en Historial</button>
+    <div id="mensajeExito" class="mensaje-exito">✅ Cita guardada en el historial correctamente.</div>
+  </div>
+
+  <script>
+    // Obtener parámetros desde la URL
+    const params = new URLSearchParams(window.location.search);
+
+    const datos = {
+      nombre: params.get("nombre") || "No definido",
+      mascota: params.get("mascota") || "No definido",
+      fecha: params.get("fecha"),
+      hora: params.get("hora") || "No definida",
+      especie: params.get("especie") || "No definida",
+      motivo: params.get("motivo") || "No definido",
+      tratamiento: params.get("tratamiento") || "No definido"
+    };
+
+    // Formatear la fecha
+    let fechaFormateada = "No definida";
+    if (datos.fecha) {
+      const fechaObj = new Date(datos.fecha);
+      const opciones = { day: 'numeric', month: 'long', year: 'numeric' };
+      fechaFormateada = fechaObj.toLocaleDateString('es-ES', opciones);
+    }
+
+    // Mostrar datos en el recibo
+    document.getElementById("nombre").textContent = datos.nombre;
+    document.getElementById("mascota").textContent = datos.mascota;
+    document.getElementById("fecha").textContent = fechaFormateada;
+    document.getElementById("hora").textContent = datos.hora;
+    document.getElementById("especie").textContent = datos.especie;
+    document.getElementById("motivo").textContent = datos.motivo;
+    document.getElementById("tratamiento").textContent = datos.tratamiento;
+
+    // Guardar en historial
+    function guardarEnHistorial() {
+      const cita = {
+        fecha: datos.fecha,
+        nombre: datos.nombre,
+        mascota: datos.mascota,
+        hora: datos.hora,
+        especie: datos.especie,
+        motivo: datos.motivo,
+        tratamiento: datos.tratamiento
+      };
+
+      let historial = JSON.parse(localStorage.getItem("historialMedico")) || [];
+      historial.push(cita);
+      localStorage.setItem("historialMedico", JSON.stringify(historial));
+
+      // Mostrar mensaje
+      const mensaje = document.getElementById("mensajeExito");
+      mensaje.style.display = "block";
+      setTimeout(() => mensaje.style.display = "none", 4000);
+    }
+  </script>
+</body>
+</html>
