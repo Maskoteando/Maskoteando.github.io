@@ -3,137 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interfaz de Vacunación Veterinaria</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <style type="text/css">
-        /* Reset de márgenes y rellenos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <link rel="icon" href="img/perrro.jpg" type="image/x-icon">
+    <title>Vacunación- Veterinaria Maskoteando</title>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fefefe;
+            color: #333;
+        }
 
-/* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    padding: 20px;
-}
+        header {
+            background-color: #3a8b7a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-header h1 {
-    color: #3a8b7a;
-    font-size: 36px;
-}
-
-header p {
-    font-size: 18px;
-    color: #555;
-}
-
-/* Contenedor del formulario */
-.form-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.form-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-group {
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: #444;
-}
-
-.input-group input, .input-group select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 100%;
-}
-
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
 button {
-    padding: 12px;
     background-color: #f8b400;
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 18px;
+    margin-top: 20px;
     cursor: pointer;
 }
-
 button:hover {
     background-color: #3a8b7a;
-    
+}
+input, button {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
 
-/* Estilos de pie de página */
-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 14px;
-    color: #555;
-}
-.volver {
-background-color: #f8b400;
-border: none;
-padding: 15px;
-text-align: ce;
-}
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #3a8b7a;
+            border-bottom: 2px solid #cce5dd;
+            padding-bottom: 8px;
+        }
+
+        p, ul {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+
+   
+         .contenedor {
+      display: flex;
+      justify-content: center; /* Centra las imágenes horizontalmente */
+      gap: 200px; /* Espacio entre las imágenes */
+    }
+
+    .contenedor img {
+      width: 250px; /* Ajusta el tamaño según necesites */
+      height: auto;
+      border: 2px solid #ccc;
+    }
     </style>
+</head>
+<body>
     <header>
-        <h1>Veterinaria  Maskoteando</h1>
-        <p>Formulario de Registro de Vacunación</p>
+        <h1>Veterinaria Maskoteando</h1>
     </header>
 
-    <section class="form-container">
-        <form action="#" method="POST">
-            <div class="input-group">
-                <label for="owner-name">Nombre del Dueño:</label>
-                <input type="text" id="owner-name" name="owner-name" required>
-            </div>
-            <div class="input-group">
-                <label for="pet-name">Nombre de la Mascota:</label>
-                <input type="text" id="pet-name" name="pet-name" required>
-            </div>
-            <div class="input-group">
-                <label for="vaccine-type">Tipo de Vacuna:</label>
-                <select id="vaccine-type" name="vaccine-type" required>
-                    <option value="rabia">Rabia</option>
-                    <option value="parvovirus">Parvovirus</option>
-                    <option value="distemper">Distemper</option>
-                    <option value="hepatitis">Hepatitis</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <label for="last-vaccine">Fecha de Última Vacunación:</label>
-                <input type="date" id="last-vaccine" name="last-vaccine" required>
-            </div>
-            <button type="submit">Registrar Vacunación</button>
-            <br>
-            <button class="volver" onclick="window.location. href='index1.html';">Regresar</button>
-        </form>
-    </section>
+    <main>
+        <section>
+            <h2>Vacunación</h2>
+            <p>
+                La vacunación tiene como finalidad prevenir algunas de las enfermedades infecciosas más graves o más contagiosas entre las que afectan a los perros y a los gatos. Éstas pueden resultar mortales o muy debilitantes. En muchos casos no existe tratamiento o resulta muy difícil, largo o poco fiable, por lo que la vacunación resulta, en estos casos en concreto, la única herramienta para controlarlas y asegurar el bienestar de las mascotas..
+            </p>
 
-    
+            <p>La vacunación es un pilar importante en la salud de nuestras mascotas, ya que éstas estimulan al sistema inmune logrando que su mascota esté protegida contra virus y bacterias evitando así que su salud se vea deteriorada. Dependiendo contra qué se quiera vacunar a tu mascota es la frecuencia con la que se deberá realizar.Una vacuna es una preparación destinada a generar inmunidad adquirida contra una enfermedad estimulando la producción de anticuerpos. Normalmente una vacuna contiene un agente que se asemeja a un microorganismo causante de la enfermedad y a menudo se hace a partir de formas debilitadas o muertas del propio virus... </p>
+             
+             <p>El número de enfermedades que es posible prevenir con la vacunación de los perros ha aumentado considerablemente con el paso de los años. La eficacia y la escasa incidencia de efectos secundarios (particularmente si se comparan con los enormes beneficios en cuanto a nivel de salud que proporcionan las vacunas) han hecho que este procedimiento se haya instaurado como herramienta fundamental para asegurar el estatus sanitario de las poblaciones caninas y felinas en todo el mundo. Estos resultados han mejorado más si cabe recientemente, con la mejora de las tecnología de producción y estandarización de los procesos con los que se elaboran las vacunas.. </p>
+        </section>
+
+        
+
+       
+    </main>
+ <button class="volver" onclick="window.location. href='index1.html';">Regresar</button>
+
+  </section>
+    <div class="contenedor">
+    <img src="img/perro13.webp" class="perro">
+    <img src="img/perro6.jpg" class="perro">
+
+
 </body>
 </html>
