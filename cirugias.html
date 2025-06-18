@@ -3,183 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cirugías Veterinaria Maskoteando</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <style type="text/css">
-        /* Estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+    <link rel="icon" href="img/perrro.jpg" type="image/x-icon">
+    <title>Cirugía - Veterinaria Maskoteando</title>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fefefe;
+            color: #333;
+        }
 
-body {
-    background-color: #f4f4f9;
-    color: #333;
-}
+        header {
+            background-color: #3a8b7a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-header {
-    background-color: #3a8b7a;
-    padding: 20px;
-    color: white;
-    text-align: center;
-}
-
-header .logo h1 {
-    font-size: 2rem;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-}
-
-.hero {
-    background-color: #3a8b7a;
-    color: white;
-    padding: 60px 0;
-    text-align: center;
-}
-
-.procedures, .schedule {
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.procedures h2, .schedule h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.procedure-list {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 20px;
-}
-
-.procedure-item {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 250px;
-}
-
-.schedule form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.schedule form label {
-    margin: 10px 0 5px;
-}
-
-.schedule form input, .schedule form select {
-    padding: 10px;
-    width: 250px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.schedule form button {
-    background-color: #f8b400;
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+button {
     background-color: #f8b400;
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    margin-top: 20px;
     cursor: pointer;
 }
-
-.schedule form button:hover {
+button:hover {
     background-color: #3a8b7a;
 }
-
-footer {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
+input, button {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
 
-.volver {
-background-color: blue;
-border: none;
-padding: 15px;
-text-align: ce;
-}
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #3a8b7a;
+            border-bottom: 2px solid #cce5dd;
+            padding-bottom: 8px;
+        }
+
+        p, ul {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+   .contenedor {
+      display: flex;
+      justify-content: center; /* Centra las imágenes horizontalmente */
+      gap: 200px; /* Espacio entre las imágenes */
+    }
+
+    .contenedor img {
+      width: 300px; /* Ajusta el tamaño según necesites */
+      height: auto;
+      border: 2px solid #ccc;
+    }
+   
     </style>
+</head>
+<body>
+    <header>
+        <h1>Veterinaria Maskoteando</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Cirugía</h2>
+            <p>
+                El servicio de Cirugía de Tejidos Blandos del Hospital Veterinario de Alta Especialidad Maskoteando® tiene como objetivo diagnosticar y tratar todos los padecimientos de su mascota que requieran de una intervención quirúrgica. Este servicio brinda la más alta calidad de servicio con calidad humana incomparable, ya que todos los médicos que pertenecen a Maskoteando® están comprometidos al 100% con el bienestar y salud de su mascota. Además, contamos con personal altamente especializado en cirugía
+            </p>
+
+            <p>Los médicos responsables del Hospital Veterinario de Alta Especialidad Maskoteando®. trabajan de manera estrecha con las especialidades de medicina interna, urgencias y cuidados intensivos del hospital para ofrecer un diagnóstico y tratamiento integral y certero para su mascota. </p>
+        </section>
+
+        
+
+        <section>
+            <h2>Realizamos:</h2>
+            <ul>
+                <li> Cirugía de vías respiratorias altas</li>
+                <li>Cirugía Laparoscópica </li>
+                <li>Esterilizaciones</li>
+                <li>Cirugía de cabeza y cuello</li>
+                <li>Cirugía reconstructiva</li>
+                <li>cirugía ortopedica</li>
+                <li>Cirugía de urgencias</li>
+            </ul>
+        </section>
+    </main>
+    <button class="volver" onclick="window.location. href='index1.html';">Regresar</button>
+ 
+    </section>
+    <div class="contenedor">
+    <img src="img/perro7.jpeg" class="perro">
+    <img src="img/perro12.webp" class="perro">
+    <img src="img/perroci.jpg" class="perro">
+    
    
 
-    <section id="home" class="hero">
-        <h2>Bienvenidos a la Veterinaria  Maskoteando</h2>
-        <p>Expertos en cirugía veterinaria y cuidado de mascotas</p>
-    </section>
-
-    <section id="procedures" class="procedures">
-        <h2>Procedimientos Quirúrgicos Comunes</h2>
-        <div class="procedure-list">
-            <div class="procedure-item">
-                <h3>Cirugía de Esterilización</h3>
-                <p>Realizamos procedimientos de esterilización para perros y gatos de forma segura.</p>
-            </div>
-            <div class="procedure-item">
-                <h3>Cirugía de Emergencia</h3>
-                <p>Atención urgente para mascotas que requieren procedimientos quirúrgicos inmediatos.</p>
-            </div>
-            <div class="procedure-item">
-                <h3>Cirugía Ortopédica</h3>
-                <p>Tratamiento de fracturas y problemas ortopédicos en tus mascotas.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="schedule" class="schedule">
-        <h2>Agenda una Cirugía</h2>
-        <form action="#" method="post">
-            <label for="petName">Nombre de la Mascota:</label>
-            <input type="text" id="petName" name="petName" required>
-
-            <label for="ownerName">Nombre del Dueño:</label>
-            <input type="text" id="ownerName" name="ownerName" required>
-
-            <label for="surgeryType">Tipo de Cirugía:</label>
-            <select id="surgeryType" name="surgeryType">
-                <option value="esterilizacion">Esterilización</option>
-                <option value="emergencia">Emergencia</option>
-                <option value="ortopedica">Ortopédica</option>
-            </select>
-
-            <label for="date">Fecha Preferida:</label>
-            <input type="date" id="date" name="date" required>
-
-            <button type="submit">Agendar Cita</button>
-            <br>
-            <button class="volver" onclick="window.location. href='index1.html';">Regresar</button>
-
-            
-        </form>
-    </section>
-<footer>
-    <p>&copy; 2025 Clínica Veterinaria El Buen Amigo</p>
-</footer>
-   
 </body>
 </html>
